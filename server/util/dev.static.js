@@ -6,7 +6,7 @@ const MemoryFs = require('memory-fs')
 const ReactDomServer = require('react-dom/server')
 const proxy = require('http-proxy-middleware')
 
-const serverConfig = require('../../build/webpack.config.server')
+const serverConfig = require('../../build/webpack.config.server.js')
 
 const getTemplate = () => {
     return new Promise((resolve,reject) => {
@@ -25,9 +25,10 @@ const Module = module.constructor
 let serverBundle
 serverCompiler.watch({},(err,stats) => {
     if(err) throw err
-    stats = stats.toJSON()
-    stats.error.forEach(err => console.error(err))
-    stats.warning.forEach(warn => console.warn(warn))
+    stats = stats.toJson()
+    console.dir(stats)
+    stats.errors.forEach(err => console.error(err))
+    stats.warnings.forEach(warn => console.warn(warn))
 
     const bundlePath = path.join(
         serverConfig.output.path,

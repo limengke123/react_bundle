@@ -3,9 +3,8 @@ const express = require('express')
 const ReactSSR = require('react-dom/server')
 const fs = require('fs')
 const path = require('path')
-const devStatic = require('./util/dev.static')
 
-const isDev = process.NODE_ENVV === 'development'
+const isDev = process.env.NODE_ENV === 'development'
 
 const app = express()
 const port = 3333
@@ -23,6 +22,7 @@ if(!isDev){
         res.send(html)
     })
 } else {
+    const devStatic = require('./util/dev.static.js')
     devStatic(app)
 }
 
