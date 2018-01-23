@@ -1,7 +1,6 @@
-'use strict'
 import React from 'react'
 import ReactDom from 'react-dom'
-import App from './app.jsx'
+import App from './views/app.jsx'
 import {AppContainer} from 'react-hot-loader'
 // ReactDom.hydrate(<App/>,document.getElementById('root'))
 const root = document.getElementById('root')
@@ -17,8 +16,8 @@ const render = Component => {
 render(App)
 
 if(module.hot){
-    module.hot.accept('./app.jsx', () => {
-        const NextApp = require('./app.jsx').default
+    module.hot.accept('./views/app.jsx', () => {
+        const NextApp = require('./views/app.jsx').default
         // ReactDom.hydrate(<NextApp/>,document.getElementById('root'))
         render(NextApp)
     })

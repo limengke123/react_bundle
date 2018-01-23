@@ -1,5 +1,5 @@
 'use strict'
 import React from 'react'
-import App from './app.jsx'
+import App from './views/app.jsx'
 
 export default <App/>
